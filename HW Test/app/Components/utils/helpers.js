@@ -13,15 +13,23 @@ var helper = {
   runQuery: function(term){
        
 
+   
+
        console.log(term);
 
 var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + authKey + "&q=" + term;
+
+$.ajax({url: queryUrl, method: "GET"})
+.done(function(data) {
+
 
 
    return axios.get(queryURL).then(function(response) {
 
         console.log(response);
         return response;
+
+  });
 
   });
 
