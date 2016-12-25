@@ -1,6 +1,6 @@
 // Include React
 var React = require("react");
-
+var createFragment = require('react-addons-create-fragment');
 // Here we include all of the sub-components
 var Form = require("./children/Form");
 var Results = require("./children/Results");
@@ -57,7 +57,7 @@ var Main = React.createClass({
 
           <div className="col-md-6">
 
-            <Results address={this.state.results} />
+            <Results address={this.state.results.data} />
 
           </div>
         </div>
