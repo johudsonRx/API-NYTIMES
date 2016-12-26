@@ -25783,7 +25783,7 @@
 
 	// Include React
 	var React = __webpack_require__(1);
-
+	var Main = __webpack_require__(212);
 	// Form is the main component. It includes the banner and form element
 	var Form = React.createClass({
 	  displayName: "Form",

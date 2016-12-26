@@ -1,6 +1,6 @@
 // Include React
 var React = require("react");
-
+var Main = require("../Main");
 // Form is the main component. It includes the banner and form element
 var Form = React.createClass({
 
