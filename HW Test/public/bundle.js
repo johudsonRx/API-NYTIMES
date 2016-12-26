@@ -25641,6 +25641,17 @@
 	        if (data !== this.state.results) {
 	          console.log(data);
 	          this.setState({ results: data });
+
+	          helpers.postResults(this.state.searchTerm).then(function () {
+	            console.log("Updated!");
+
+	            // After we've done the post... then get the updated results
+	            helpers.getResults().then(function (response) {
+	              console.log("Current Results", response.data);
+
+	              this.setState({ results: response.data });
+	            }.bind(this));
+	          }.bind(this));
 	        }
 	        // This code is necessary to bind the keyword "this" when we say this.setState
 	        // to actually mean the component itself and not the runQuery function.
@@ -25946,9 +25957,23 @@
 
 	    return axios.get(queryURL).then(function (response) {
 
-	      console.log(response);
-	      return response.data;
+	      console.log(response.data.response.docs[0].headline.main);
+
+	      if (response.data.response.docs[0].headline.main) {
+	        return response.data.response.docs[0].headline.main;
+	      } else {
+	        return "";
+	      }
 	    });
+	  },
+
+	  getResults: function getResults() {
+	    return axios.get("/api");
+	  },
+
+	  postResults: function postResults(term) {
+	    return axios.post("/api", { article: term });
+	    console.log("Posted to MongoDB");
 	  }
 
 	};

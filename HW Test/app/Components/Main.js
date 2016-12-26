@@ -27,6 +27,19 @@ var Main = React.createClass({
         if (data !== this.state.results) {
           console.log(data);
           this.setState({ results: data });
+
+           helpers.postResults(this.state.searchTerm).then(function() {
+          console.log("Updated!");
+
+          // After we've done the post... then get the updated results
+          helpers.getResults().then(function(response) {
+            console.log("Current Results", response.data);
+
+            this.setState({ results: response.data });
+
+          }.bind(this));
+        }.bind(this));
+
         }
         // This code is necessary to bind the keyword "this" when we say this.setState
         // to actually mean the component itself and not the runQuery function.
@@ -36,6 +49,7 @@ var Main = React.createClass({
   setTerm: function(term) {
     this.setState({ searchTerm: term });
   },
+
 
   // Here we describe this component's render method
   render: function() {

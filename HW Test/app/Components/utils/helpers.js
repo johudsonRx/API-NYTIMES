@@ -24,11 +24,27 @@ var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key
 
    return axios.get(queryURL).then(function(response) {
 
-        console.log(response);
-        return response.data;
+        console.log(response.data.response.docs[0].headline.main);
 
+
+    if (response.data.response.docs[0].headline.main){
+      return response.data.response.docs[0].headline.main;
+    }
+
+    else{
+      return "";
+    }
   });
 
+},
+
+getResults: function() {
+  return axios.get("/api");
+},
+
+postResults: function(term) {
+  return axios.post("/api", {article: term});
+  console.log("Posted to MongoDB")
 },
 
   // getResults: function(){
