@@ -39,12 +39,22 @@ var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key
 },
 
 getResults: function() {
-  return axios.get("/api");
+  return axios.get("/api")
+  .then(function(response){
+    console.log(response);
+    return response;
+  });
+
 },
 
 postResults: function(term) {
-  return axios.post("/api", {article: term});
+  return axios.post("/api", {term: term})
+  .then(function(results){
   console.log("Posted to MongoDB")
+   
+    return(results);
+
+})
 },
 
   // getResults: function(){

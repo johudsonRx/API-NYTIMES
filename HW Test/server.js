@@ -5,7 +5,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 
 //Require History Schema
-var term = require('./models/term.js');
+var term = require('./models/Term');
 
 // Create Instance of Express
 var app = express();
@@ -56,13 +56,14 @@ app.get("/api", function(req, res) {
 });
 
 app.post("/api", function(req, res) {
-  console.log("BODY: " + req.body.location);
+  var newTerm = new term(req.body);
+  console.log("BODY: " + req.body.term);
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
   term.create({
-    location: req.body.location,
-    date: Date.now()
+    "term": req.body.term,
+    "date": Date.now()
   }, function(err) {
     if (err) {
       console.log(err);

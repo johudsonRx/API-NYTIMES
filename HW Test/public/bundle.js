@@ -25630,6 +25630,10 @@
 	    return { searchTerm: "", results: "" };
 	  },
 
+	  setTerm: function setTerm(term) {
+	    this.setState({ searchTerm: term });
+	  },
+
 	  // componentDidUpdate is a lifecycle method that will get run every time the component updates it's
 	  // props or state
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -25639,27 +25643,25 @@
 
 	      helpers.runQuery(this.state.searchTerm).then(function (data) {
 	        if (data !== this.state.results) {
-	          console.log(data);
+	          console.log("Results", data);
 	          this.setState({ results: data });
 
 	          helpers.postResults(this.state.searchTerm).then(function () {
 	            console.log("Updated!");
 
 	            // After we've done the post... then get the updated results
-	            helpers.getResults().then(function (response) {
-	              console.log("Current Results", response.data);
+	            // helpers.getResults().then(function(response) {
+	            //   console.log("Current Results", response.data);
 
-	              this.setState({ results: response.data });
-	            }.bind(this));
+	            //   this.setState({ results: response.data });
+
+	            // }.bind(this));
 	          }.bind(this));
 	        }
 	        // This code is necessary to bind the keyword "this" when we say this.setState
 	        // to actually mean the component itself and not the runQuery function.
 	      }.bind(this));
 	    }
-	  },
-	  setTerm: function setTerm(term) {
-	    this.setState({ searchTerm: term });
 	  },
 
 	  // Here we describe this component's render method
@@ -25696,7 +25698,7 @@
 	        React.createElement(
 	          "div",
 	          { className: "col-md-6" },
-	          React.createElement(Results, { address: this.state.results.data })
+	          React.createElement(Results, { address: this.state.results })
 	        )
 	      )
 	    );
@@ -25792,42 +25794,48 @@
 
 	"use strict";
 
-	// Include React
+	// Include React 
 	var React = __webpack_require__(1);
-	var Main = __webpack_require__(212);
-	// Form is the main component. It includes the banner and form element
+
+	// This is the form component. 
 	var Form = React.createClass({
 	  displayName: "Form",
 
 
 	  // Here we set a generic state associated with the text being searched for
+	  // React created
 	  getInitialState: function getInitialState() {
-	    return { term: "" };
+	    return {
+	      term: ""
+	    };
 	  },
 
-	  // This function will respond to the user input
+	  // This function will respond to the user input 
+	  // Custom (developer created)
 	  handleChange: function handleChange(event) {
+
 	    // Here we create syntax to capture any change in text to the query terms (pre-search).
-	    // See this Stack Overflow answer for more details:
+	    // See this Stack Overflow answer for more details: 
 	    // http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
 	    var newState = {};
 	    newState[event.target.id] = event.target.value;
 	    this.setState(newState);
 	  },
 
-	  // When a user submits...
-	  handleSubmit: function handleSubmit(event) {
-	    // preventing the form from trying to submit itself
-	    event.preventDefault();
+	  // When a user submits... 
+	  // Custom (developer created)
+	  handleClick: function handleClick() {
+
+	    console.log("CLICK");
+	    console.log(this.state.term);
+
 	    // Set the parent to have the search term
 	    this.props.setTerm(this.state.term);
-
-	    // Clearing the input field after submitting
-	    this.setState({ term: "" });
 	  },
 
-	  // Here we describe this component's render method
+	  // Here we render the function
 	  render: function render() {
+
 	    return React.createElement(
 	      "div",
 	      { className: "panel panel-default" },
@@ -25845,7 +25853,7 @@
 	        { className: "panel-body text-center" },
 	        React.createElement(
 	          "form",
-	          { onSubmit: this.handleSubmit },
+	          null,
 	          React.createElement(
 	            "div",
 	            { className: "form-group" },
@@ -25858,21 +25866,11 @@
 	                "Location"
 	              )
 	            ),
-	            React.createElement("input", {
-	              type: "text",
-	              value: this.state.term,
-	              className: "form-control text-center",
-	              id: "term",
-	              onChange: this.handleChange,
-	              required: true
-	            }),
+	            React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
 	            React.createElement("br", null),
 	            React.createElement(
 	              "button",
-	              {
-	                className: "btn btn-primary",
-	                type: "submit"
-	              },
+	              { type: "button", className: "btn btn-primary", onClick: this.handleClick },
 	              "Submit"
 	            )
 	          )
@@ -25968,12 +25966,18 @@
 	  },
 
 	  getResults: function getResults() {
-	    return axios.get("/api");
+	    return axios.get("/api").then(function (response) {
+	      console.log(response);
+	      return response;
+	    });
 	  },
 
 	  postResults: function postResults(term) {
-	    return axios.post("/api", { article: term });
-	    console.log("Posted to MongoDB");
+	    return axios.post("/api", { term: term }).then(function (results) {
+	      console.log("Posted to MongoDB");
+
+	      return results;
+	    });
 	  }
 
 	};

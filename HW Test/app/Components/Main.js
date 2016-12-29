@@ -16,6 +16,11 @@ var Main = React.createClass({
     return { searchTerm: "", results: "" };
   },
 
+   setTerm: function(term) {
+    this.setState({ searchTerm: term });
+  },
+
+
   // componentDidUpdate is a lifecycle method that will get run every time the component updates it's
   // props or state
   componentDidUpdate: function(prevProps, prevState) {
@@ -25,19 +30,19 @@ var Main = React.createClass({
 
       helpers.runQuery(this.state.searchTerm).then(function(data) {
         if (data !== this.state.results) {
-          console.log(data);
+          console.log("Results", data);
           this.setState({ results: data });
 
            helpers.postResults(this.state.searchTerm).then(function() {
           console.log("Updated!");
 
           // After we've done the post... then get the updated results
-          helpers.getResults().then(function(response) {
-            console.log("Current Results", response.data);
+          // helpers.getResults().then(function(response) {
+          //   console.log("Current Results", response.data);
 
-            this.setState({ results: response.data });
+          //   this.setState({ results: response.data });
 
-          }.bind(this));
+          // }.bind(this));
         }.bind(this));
 
         }
@@ -45,9 +50,6 @@ var Main = React.createClass({
         // to actually mean the component itself and not the runQuery function.
       }.bind(this));
     }
-  },
-  setTerm: function(term) {
-    this.setState({ searchTerm: term });
   },
 
 
@@ -71,7 +73,7 @@ var Main = React.createClass({
 
           <div className="col-md-6">
 
-            <Results address={this.state.results.data} />
+            <Results address={this.state.results} />
 
           </div>
         </div>
