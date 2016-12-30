@@ -16,9 +16,13 @@ var Results = React.createClass({
           <p>{this.props.address}</p>
         </div>
       </div>
-    );
+
+      
+    );  
   }
 });
+
+
 
 // Export the component back for use in other files
 module.exports = Results;

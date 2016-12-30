@@ -25676,29 +25676,33 @@
 	          "div",
 	          { className: "jumbotron" },
 	          React.createElement(
-	            "h2",
-	            { className: "text-center" },
-	            "Address Finder!"
-	          ),
-	          React.createElement(
-	            "p",
+	            "h1",
 	            { className: "text-center" },
 	            React.createElement(
-	              "em",
+	              "strong",
 	              null,
-	              "Enter a landmark to search for its exact address (ex: \"Eiffel Tower\")."
+	              React.createElement("i", { className: "fa fa-newspaper-o" }),
+	              " New York Times Search"
 	            )
 	          )
 	        ),
 	        React.createElement(
 	          "div",
-	          { className: "col-md-6" },
+	          { className: "col-md-12" },
 	          React.createElement(Form, { setTerm: this.setTerm })
-	        ),
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "row" },
 	        React.createElement(
 	          "div",
-	          { className: "col-md-6" },
-	          React.createElement(Results, { address: this.state.results })
+	          { className: "col-md-12" },
+	          React.createElement(
+	            "div",
+	            { className: "post-preview" },
+	            React.createElement(Results, { address: this.state.results })
+	          )
 	        )
 	      )
 	    );
@@ -25845,34 +25849,35 @@
 	        React.createElement(
 	          "h3",
 	          { className: "panel-title text-center" },
-	          "Query"
+	          React.createElement(
+	            "strong",
+	            null,
+	            React.createElement("i", { className: "fa  fa-list-alt" }),
+	            "Search Parameters"
+	          )
 	        )
 	      ),
 	      React.createElement(
 	        "div",
-	        { className: "panel-body text-center" },
+	        { className: "panel-body" },
 	        React.createElement(
 	          "form",
-	          null,
+	          { role: "form" },
 	          React.createElement(
 	            "div",
 	            { className: "form-group" },
 	            React.createElement(
-	              "h4",
-	              { className: "" },
-	              React.createElement(
-	                "strong",
-	                null,
-	                "Location"
-	              )
+	              "label",
+	              { htmlFor: "search" },
+	              "Search Term:"
 	            ),
-	            React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
-	            React.createElement("br", null),
-	            React.createElement(
-	              "button",
-	              { type: "button", className: "btn btn-primary", onClick: this.handleClick },
-	              "Submit"
-	            )
+	            React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true })
+	          ),
+	          React.createElement("br", null),
+	          React.createElement(
+	            "button",
+	            { type: "button", className: "btn btn-primary", onClick: this.handleClick },
+	            "Submit"
 	          )
 	        )
 	      )
@@ -25917,7 +25922,7 @@
 	        React.createElement(
 	          "h1",
 	          null,
-	          "Address:"
+	          "Articles:"
 	        ),
 	        React.createElement(
 	          "p",
