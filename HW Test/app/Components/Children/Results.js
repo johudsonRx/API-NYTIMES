@@ -13,7 +13,14 @@ var Results = React.createClass({
         </div>
         <div className="panel-body text-center">
           <h1>Articles:</h1>
-          <p>{this.props.address}</p>
+         
+
+         
+          	{this.props.address.map(function(response, i){
+               
+          		return <p key={i}>{response.term} - {response.date} </p>
+          	})
+          }
         </div>
       </div>
 

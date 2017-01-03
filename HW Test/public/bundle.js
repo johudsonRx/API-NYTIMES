@@ -25627,7 +25627,7 @@
 
 	  // Here we set a generic state associated with the number of clicks
 	  getInitialState: function getInitialState() {
-	    return { searchTerm: "", results: "" };
+	    return { searchTerm: "", results: [] };
 	  },
 
 	  setTerm: function setTerm(term) {
@@ -25924,11 +25924,17 @@
 	          null,
 	          "Articles:"
 	        ),
-	        React.createElement(
-	          "p",
-	          null,
-	          this.props.address
-	        )
+	        this.props.address.map(function (response, i) {
+
+	          return React.createElement(
+	            "p",
+	            { key: i },
+	            response.term,
+	            " - ",
+	            response.date,
+	            " "
+	          );
+	        })
 	      )
 	    );
 	  }
@@ -25960,13 +25966,11 @@
 
 	    return axios.get(queryURL).then(function (response) {
 
-	      console.log(response.data.response.docs[0].headline.main);
+	      console.log(response.data.response.docs);
 
-	      if (response.data.response.docs[0].headline.main) {
-	        return response.data.response.docs[0].headline.main;
-	      } else {
-	        return "";
-	      }
+	      return response.data.response.docs;
+
+	      // return response.data.response.docs;
 	    });
 	  },
 

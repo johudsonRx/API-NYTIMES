@@ -13,7 +13,7 @@ var Main = React.createClass({
 
   // Here we set a generic state associated with the number of clicks
   getInitialState: function() {
-    return { searchTerm: "", results: "" };
+    return { searchTerm: "", results: [] };
   },
 
    setTerm: function(term) {

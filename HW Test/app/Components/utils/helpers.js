@@ -24,17 +24,13 @@ var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key
 
    return axios.get(queryURL).then(function(response) {
 
-        console.log(response.data.response.docs[0].headline.main);
+        console.log(response.data.response.docs);
 
+       return response.data.response.docs;
+    
+     // return response.data.response.docs;
 
-    if (response.data.response.docs[0].headline.main){
-      return response.data.response.docs[0].headline.main;
-    }
-
-    else{
-      return "";
-    }
-  });
+    });
 
 },
 
