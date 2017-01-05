@@ -25901,42 +25901,45 @@
 	var Results = React.createClass({
 	  displayName: "Results",
 
-
+	  componentDidUpdate: function componentDidUpdate() {
+	    console.log("this is in results: ", this.props.address);
+	  },
 	  // Here we render the function
-	  render: function render() {
-	    return React.createElement(
-	      "div",
-	      { className: "panel panel-default" },
-	      React.createElement(
-	        "div",
-	        { className: "panel-heading" },
+	  renderArticles: function renderArticles() {
+	    return this.props.address.map(function (article, i) {
+	      return React.createElement(
+	        "li",
+	        { key: i },
 	        React.createElement(
-	          "h3",
-	          { className: "panel-title text-center" },
-	          "Results"
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "panel-body text-center" },
-	        React.createElement(
-	          "h1",
+	          "p",
 	          null,
-	          "Articles:"
-	        ),
-	        this.props.address.map(function (response, i) {
-
-	          return React.createElement(
-	            "p",
-	            { key: i },
-	            response.term,
-	            " - ",
-	            response.date,
-	            " "
-	          );
-	        })
-	      )
+	          article.headline.main
+	        )
+	      );
+	    });
+	  },
+	  renderContainer: function renderContainer() {
+	    return React.createElement(
+	      "ul",
+	      null,
+	      this.renderArticles()
 	    );
+	  },
+	  render: function render() {
+	    if (!this.props.address) {
+
+	      return React.createElement(
+	        "div",
+	        { className: "article-area" },
+	        React.createElement(
+	          "p",
+	          null,
+	          "Articles go here..."
+	        ),
+	        "s"
+	      );
+	    }
+	    return this.renderContainer();
 	  }
 	});
 

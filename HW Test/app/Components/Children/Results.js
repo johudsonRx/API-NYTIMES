@@ -3,29 +3,42 @@ var React = require("react");
 
 // This is the main component. It includes the banner and Results element.
 var Results = React.createClass({
-
+  componentDidUpdate:function(){
+    console.log("this is in results: ", this.props.address);
+  },
   // Here we render the function
+  renderArticles: function(){
+    return this.props.address.map(function(article, i){
+        return(
+            <li key={i}>
+              <p>{article.headline.main}</p>
+             </li>
+          )
+
+    });
+  },
+  renderContainer:function(){
+    return(
+      <ul>
+        {this.renderArticles()}
+      </ul>
+
+      )
+  },
   render: function() {
-    return (
-      <div className="panel panel-default">
-        <div className="panel-heading">
-          <h3 className="panel-title text-center">Results</h3>
-        </div>
-        <div className="panel-body text-center">
-          <h1>Articles:</h1>
-         
+      if(!this.props.address){
 
-         
-          	{this.props.address.map(function(response, i){
-               
-          		return <p key={i}>{response.term} - {response.date} </p>
-          	})
-          }
-        </div>
-      </div>
+        return(
+          <div className="article-area">
 
-      
-    );  
+            <p>Articles go here...</p>s
+
+                    </div>
+
+          )
+
+      }
+      return this.renderContainer();
   }
 });
 
