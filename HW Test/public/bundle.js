@@ -25901,9 +25901,9 @@
 	var Results = React.createClass({
 	  displayName: "Results",
 
-	  componentDidUpdate: function componentDidUpdate() {
-	    console.log("this is in results: ", this.props.address);
-	  },
+	  // componentDidUpdate:function(){
+	  //   console.log("this is in results: ", this.props.address);
+	  // },
 	  // Here we render the function
 	  renderArticles: function renderArticles() {
 	    return this.props.address.map(function (article, i) {
@@ -25911,9 +25911,15 @@
 	        "li",
 	        { key: i },
 	        React.createElement(
-	          "p",
-	          null,
-	          article.headline.main
+	          "a",
+	          { href: article.web_url },
+	          " ",
+	          React.createElement(
+	            "h3",
+	            null,
+	            article.headline.main,
+	            " "
+	          )
 	        )
 	      );
 	    });
@@ -25932,11 +25938,14 @@
 	        "div",
 	        { className: "article-area" },
 	        React.createElement(
-	          "p",
-	          null,
-	          "Articles go here..."
-	        ),
-	        "s"
+	          "div",
+	          { className: "post-preview" },
+	          React.createElement(
+	            "h2",
+	            { "class": "post-title" },
+	            "Articles go here..."
+	          )
+	        )
 	      );
 	    }
 	    return this.renderContainer();

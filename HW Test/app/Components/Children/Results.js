@@ -3,15 +3,16 @@ var React = require("react");
 
 // This is the main component. It includes the banner and Results element.
 var Results = React.createClass({
-  componentDidUpdate:function(){
-    console.log("this is in results: ", this.props.address);
-  },
+  // componentDidUpdate:function(){
+  //   console.log("this is in results: ", this.props.address);
+  // },
   // Here we render the function
   renderArticles: function(){
     return this.props.address.map(function(article, i){
         return(
             <li key={i}>
-              <p>{article.headline.main}</p>
+             <a href={article.web_url}> <h3>{article.headline.main} </h3></a>
+            
              </li>
           )
 
@@ -31,9 +32,14 @@ var Results = React.createClass({
         return(
           <div className="article-area">
 
-            <p>Articles go here...</p>s
+        
+        <div className="post-preview">
+           
+            <h2 class="post-title">Articles go here...</h2>
 
                     </div>
+        </div>
+
 
           )
 
