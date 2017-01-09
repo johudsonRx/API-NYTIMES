@@ -56,13 +56,23 @@ var Main = React.createClass({
   // Here we describe this component's render method
   render: function() {
     return (
-      <div className="container">
-        <div className="row">
-       
+      <div className="container-fluid">
 
-          <div className="jumbotron">
-        <h1 className="text-center"><strong><i className="fa fa-newspaper-o"></i> New York Times Search</strong></h1>
+            <div className="row">
+             <div className="real-header">
+                <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div className="site-heading">
+                        <h1>NY Times Article search</h1>
+                        <hr className="small"></hr>
+                        <span className="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                    </div>
+                </div>
+           
+        </div>
     </div>
+  
+
+            <div className="row">
 
           <div className="col-md-12">
 
@@ -70,6 +80,8 @@ var Main = React.createClass({
 
           </div>
         </div>
+      
+
 
        <div className="row">
           <div className="col-md-12">
@@ -77,9 +89,9 @@ var Main = React.createClass({
             <Results address={this.state.results} />
             </div>
           </div>
-
         </div>
       </div>
+
     );
   }
 });

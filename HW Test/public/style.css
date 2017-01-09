@@ -1,0 +1,37 @@
+html, body {
+	margin: 0
+	padding: 0;
+
+}
+
+/*.intro-header {
+ 
+ height: 448px;
+  
+}*/
+
+.real-header {
+  /*background-color: #777777;*/
+ /* background-image: url('http://usersthink.com/wp-content/uploads/19-usersthink-stock-image-small.jpg');*/
+  background: no-repeat center center;
+  background-size: cover;
+  background-image: url('http://www.filoilarnakas.com/wp-content/uploads/2016/06/gQZ2iaRdRoWKahCTncS1_brooklyn-bridge.jpg');
+  height: 448px;
+}
+
+.site-heading {
+  font-size: 30px;
+  color: white;
+ /* background-image: url('http://usersthink.com/wp-content/uploads/19-usersthink-stock-image-small.jpg');*/
+}
+
+
+.post-preview {
+	color: #333333;
+}
+
+.post-preview > a:hover,
+.post-preview > a:focus {
+  text-decoration: none;
+  color: #0085A1;
+}

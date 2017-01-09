@@ -11,7 +11,7 @@ var Results = React.createClass({
     return this.props.address.map(function(article, i){
         return(
             <li key={i}>
-             <a href={article.web_url}> <h3>{article.headline.main} </h3></a>
+             <a href={article.web_url}> <h2>{article.headline.main} </h2></a>
             
              </li>
           )

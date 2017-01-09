@@ -25668,24 +25668,37 @@
 	  render: function render() {
 	    return React.createElement(
 	      "div",
-	      { className: "container" },
+	      { className: "container-fluid" },
 	      React.createElement(
 	        "div",
 	        { className: "row" },
 	        React.createElement(
 	          "div",
-	          { className: "jumbotron" },
+	          { className: "real-header" },
 	          React.createElement(
-	            "h1",
-	            { className: "text-center" },
+	            "div",
+	            { className: "col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" },
 	            React.createElement(
-	              "strong",
-	              null,
-	              React.createElement("i", { className: "fa fa-newspaper-o" }),
-	              " New York Times Search"
+	              "div",
+	              { className: "site-heading" },
+	              React.createElement(
+	                "h1",
+	                null,
+	                "Clean Blog"
+	              ),
+	              React.createElement("hr", { className: "small" }),
+	              React.createElement(
+	                "span",
+	                { className: "subheading" },
+	                "A Clean Blog Theme by Start Bootstrap"
+	              )
 	            )
 	          )
-	        ),
+	        )
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "row" },
 	        React.createElement(
 	          "div",
 	          { className: "col-md-12" },
@@ -25915,7 +25928,7 @@
 	          { href: article.web_url },
 	          " ",
 	          React.createElement(
-	            "h3",
+	            "h2",
 	            null,
 	            article.headline.main,
 	            " "
