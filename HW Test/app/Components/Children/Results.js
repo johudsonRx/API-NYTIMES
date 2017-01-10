@@ -12,7 +12,7 @@ var Results = React.createClass({
         return(
             <li key={i}>
              <a href={article.web_url}> <h2>{article.headline.main} </h2></a>
-            
+               
              </li>
           )
 

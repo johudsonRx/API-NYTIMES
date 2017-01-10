@@ -60,26 +60,40 @@ var Main = React.createClass({
 
             <div className="row">
              <div className="real-header">
+
+              <div className="row">
                 <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div className="site-heading">
-                        <h1>NY Times Article search</h1>
+                        <h1 className="text-center"><strong><i className="fa fa-newspaper-o"></i>NY Times Article search</strong></h1>
                         <hr className="small"></hr>
-                        <span className="subheading">A Clean Blog Theme by Start Bootstrap</span>
-                    </div>
-                </div>
+                        <span className="subheading"></span>
            
+                      
+                        
+
+                    </div>
+
+                  <div className="row">
+                   <div className="col-lg-4">
+
+                   </div>
+
+                   <div className="col-lg-4">
+                    <Form setTerm={this.setTerm} />
+                    </div>
+
+                    <div className="col-lg-4">
+                    </div>
+                  </div>
+                </div>
+               </div>
+              
         </div>
     </div>
   
+           
 
-            <div className="row">
-
-          <div className="col-md-12">
-
-            <Form setTerm={this.setTerm} />
-
-          </div>
-        </div>
+            
       
 
 

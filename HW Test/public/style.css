@@ -10,6 +10,8 @@ html, body {
   
 }*/
 
+
+
 .real-header {
   /*background-color: #777777;*/
  /* background-image: url('http://usersthink.com/wp-content/uploads/19-usersthink-stock-image-small.jpg');*/
@@ -25,6 +27,11 @@ html, body {
  /* background-image: url('http://usersthink.com/wp-content/uploads/19-usersthink-stock-image-small.jpg');*/
 }
 
+
+
+.form-control.text-center {
+  width: 200px;
+}
 
 .post-preview {
 	color: #333333;

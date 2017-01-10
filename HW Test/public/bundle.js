@@ -25677,32 +25677,39 @@
 	          { className: "real-header" },
 	          React.createElement(
 	            "div",
-	            { className: "col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" },
+	            { className: "row" },
 	            React.createElement(
 	              "div",
-	              { className: "site-heading" },
+	              { className: "col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" },
 	              React.createElement(
-	                "h1",
-	                null,
-	                "Clean Blog"
+	                "div",
+	                { className: "site-heading" },
+	                React.createElement(
+	                  "h1",
+	                  { className: "text-center" },
+	                  React.createElement(
+	                    "strong",
+	                    null,
+	                    React.createElement("i", { className: "fa fa-newspaper-o" }),
+	                    "NY Times Article search"
+	                  )
+	                ),
+	                React.createElement("hr", { className: "small" }),
+	                React.createElement("span", { className: "subheading" })
 	              ),
-	              React.createElement("hr", { className: "small" }),
 	              React.createElement(
-	                "span",
-	                { className: "subheading" },
-	                "A Clean Blog Theme by Start Bootstrap"
+	                "div",
+	                { className: "row" },
+	                React.createElement("div", { className: "col-lg-4" }),
+	                React.createElement(
+	                  "div",
+	                  { className: "col-lg-4" },
+	                  React.createElement(Form, { setTerm: this.setTerm })
+	                ),
+	                React.createElement("div", { className: "col-lg-4" })
 	              )
 	            )
 	          )
-	        )
-	      ),
-	      React.createElement(
-	        "div",
-	        { className: "row" },
-	        React.createElement(
-	          "div",
-	          { className: "col-md-12" },
-	          React.createElement(Form, { setTerm: this.setTerm })
 	        )
 	      ),
 	      React.createElement(
@@ -25855,44 +25862,17 @@
 
 	    return React.createElement(
 	      "div",
-	      { className: "panel panel-default" },
+	      { className: "form-group" },
 	      React.createElement(
-	        "div",
-	        { className: "panel-heading" },
-	        React.createElement(
-	          "h3",
-	          { className: "panel-title text-center" },
-	          React.createElement(
-	            "strong",
-	            null,
-	            React.createElement("i", { className: "fa  fa-list-alt" }),
-	            "Search Parameters"
-	          )
-	        )
+	        "label",
+	        { htmlFor: "search" },
+	        "Search Term:"
 	      ),
+	      React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true }),
 	      React.createElement(
-	        "div",
-	        { className: "panel-body" },
-	        React.createElement(
-	          "form",
-	          { role: "form" },
-	          React.createElement(
-	            "div",
-	            { className: "form-group" },
-	            React.createElement(
-	              "label",
-	              { htmlFor: "search" },
-	              "Search Term:"
-	            ),
-	            React.createElement("input", { type: "text", className: "form-control text-center", id: "term", onChange: this.handleChange, required: true })
-	          ),
-	          React.createElement("br", null),
-	          React.createElement(
-	            "button",
-	            { type: "button", className: "btn btn-primary", onClick: this.handleClick },
-	            "Submit"
-	          )
-	        )
+	        "button",
+	        { type: "button", className: "btn btn-primary", onClick: this.handleClick },
+	        "Submit"
 	      )
 	    );
 	  }
