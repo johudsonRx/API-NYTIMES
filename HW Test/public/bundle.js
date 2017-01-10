@@ -25901,17 +25901,27 @@
 	  renderArticles: function renderArticles() {
 	    return this.props.address.map(function (article, i) {
 	      return React.createElement(
-	        "li",
-	        { key: i },
+	        "div",
+	        { className: "container" },
 	        React.createElement(
-	          "a",
-	          { href: article.web_url },
-	          " ",
+	          "div",
+	          { className: "article", key: i },
 	          React.createElement(
-	            "h2",
+	            "a",
+	            { href: article.web_url },
+	            " ",
+	            React.createElement(
+	              "h2",
+	              null,
+	              article.headline.main,
+	              " "
+	            )
+	          ),
+	          React.createElement(
+	            "h4",
 	            null,
-	            article.headline.main,
-	            " "
+	            " Written by ",
+	            article.byline.original
 	          )
 	        )
 	      );

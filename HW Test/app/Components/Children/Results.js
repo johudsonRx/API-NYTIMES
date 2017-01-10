@@ -10,10 +10,16 @@ var Results = React.createClass({
   renderArticles: function(){
     return this.props.address.map(function(article, i){
         return(
-            <li key={i}>
+      
+          <div className="container">
+
+
+            <div className="article" key={i}>
+             
              <a href={article.web_url}> <h2>{article.headline.main} </h2></a>
-               
-             </li>
+               <h4> Written by {article.byline.original}</h4>
+             </div>
+          </div>
           )
 
     });
